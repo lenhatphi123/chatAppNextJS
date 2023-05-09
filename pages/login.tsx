@@ -1,0 +1,54 @@
+import { Button } from "@mui/material";
+import Head from "next/head";
+import styled from "styled-components";
+import Image from "next/image";
+import WhatsAppLogo from "../assets/whatsapplogo.png";
+
+const StyleContainer = styled.div`
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: whitesmoke;
+`;
+const StyleLoginContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 100px;
+  align-items: center;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+`;
+const StyleImageWrapper = styled.div`
+  margin-bottom: 50px;
+`;
+
+const login = () => {
+  return (
+    <StyleContainer>
+      <Head>
+        <title>Login</title>
+      </Head>
+      <StyleLoginContainer>
+        <StyleImageWrapper>
+          <Image
+            src={WhatsAppLogo}
+            alt="WhatsAppLogo"
+            width={200}
+            height={200}
+          />
+        </StyleImageWrapper>
+        <Button
+          variant="outlined"
+          onClick={() => {
+            console.log("SIGNING IN");
+          }}
+        >
+          Sign in with Google
+        </Button>
+      </StyleLoginContainer>
+    </StyleContainer>
+  );
+};
+
+export default login;
