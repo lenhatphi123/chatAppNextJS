@@ -6,8 +6,18 @@ import ChatIcon from "@mui/icons-material/Chat";
 import MoreVertivalIcon from "@mui/icons-material/MoreVert";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SearchIcon from "@mui/icons-material/Search";
+import { signOut } from "firebase/auth";
+import { auth } from "../config/firebase";
 
 const Sidebar = () => {
+  const logout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.log("ERROR LOGGIN OUT ", error);
+    }
+  };
+
   return (
     <StyledContainer>
       <StyledHeader>
@@ -21,7 +31,7 @@ const Sidebar = () => {
           <IconButton>
             <MoreVertivalIcon />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={logout}>
             <LogoutIcon />
           </IconButton>
           <IconButton></IconButton>

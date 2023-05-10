@@ -3,6 +3,8 @@ import Head from "next/head";
 import styled from "styled-components";
 import Image from "next/image";
 import WhatsAppLogo from "../assets/whatsapplogo.png";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { auth } from "../config/firebase";
 
 const StyleContainer = styled.div`
   height: 100vh;
@@ -24,6 +26,10 @@ const StyleImageWrapper = styled.div`
 `;
 
 const login = () => {
+  const [signInWithGoogle, _user, _loading, _error] = useSignInWithGoogle(auth);
+  const signIn = () => {
+    signInWithGoogle();
+  };
   return (
     <StyleContainer>
       <Head>
@@ -38,12 +44,7 @@ const login = () => {
             height={200}
           />
         </StyleImageWrapper>
-        <Button
-          variant="outlined"
-          onClick={() => {
-            console.log("SIGNING IN");
-          }}
-        >
+        <Button variant="outlined" onClick={signIn}>
           Sign in with Google
         </Button>
       </StyleLoginContainer>
