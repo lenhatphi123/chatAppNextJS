@@ -39,4 +39,5 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return <Component {...pageProps} />;
 }
-export default MyApp;
+export default MyApp; 
+//1:15:38
