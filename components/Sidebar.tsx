@@ -23,6 +23,7 @@ import * as EmailValidator from "email-validator";
 import { addDoc, collection, query, where } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { Conversation } from "../types";
+import ConversationSelect from "./ConversationSelect";
 
 const Sidebar = () => {
   const logout = async () => {
@@ -117,6 +118,14 @@ const Sidebar = () => {
         Start a new conversation
       </StyledSidebarButton>
 
+      {converstationsSnapshot?.docs.map((conversation) => (
+        <ConversationSelect
+          key={conversation.id}
+          id={conversation.id}
+          conversationUsers={(conversation.data() as Conversation).user}
+        />
+      ))}
+
       <Dialog
         open={isOpenNewConversationDialog}
         onClose={closeNewConversationDialog}
@@ -197,3 +206,5 @@ const StyledSearchInput = styled.input`
   flex: 1;
 `;
 export default Sidebar;
+
+//1:43
